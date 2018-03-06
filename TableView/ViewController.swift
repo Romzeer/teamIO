@@ -1,9 +1,7 @@
 //
 //  ViewController.swift
 //  TableView
-//
-//  Created by Savinien Maire on 11/10/2017.
-//
+////
 
 import UIKit
 

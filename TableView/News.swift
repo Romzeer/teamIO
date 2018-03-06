@@ -2,9 +2,7 @@
 //  News.swift
 //  TableView
 //
-//  Created by Romzeer on 05/03/2018.
-//  Copyright © 2018 Savinien Maire. All rights reserved.
-//
+//  Created by Romzeer on 05/03/2018.//
 
 import Foundation
 

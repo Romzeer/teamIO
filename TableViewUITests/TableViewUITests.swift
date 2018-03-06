@@ -2,8 +2,6 @@
 //  TableViewUITests.swift
 //  TableViewUITests
 //
-//  Created by Savinien Maire on 11/10/2017.
-//  Copyright © 2017 Savinien Maire. All rights reserved.
 //
 
 import XCTest
