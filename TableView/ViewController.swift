@@ -7,6 +7,7 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var dateView: UILabel!
     @IBOutlet weak var TrumpBtn: UIButton!
     @IBOutlet weak var bitcoinBtn: UIButton!
     @IBOutlet weak var cellView: UIView!
@@ -17,9 +18,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let colors = Colors()
+        view.backgroundColor = UIColor.clear
+        let backgroundLayer = colors.gl
+        backgroundLayer?.frame = view.frame
+        view.layer.insertSublayer(backgroundLayer!, at: 0)
+        TrumpBtn.layer.cornerRadius = 5
+        TrumpBtn.layer.borderWidth = 1
+        TrumpBtn.layer.borderColor = UIColor.orange.cgColor
+        bitcoinBtn.layer.cornerRadius = 5
+        bitcoinBtn.layer.borderWidth = 1
+        bitcoinBtn.layer.borderColor = UIColor.orange.cgColor
         tableView.dataSource = self
         tableView.delegate = self
-        //getNews()
+        getNews(param: "google")
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func trumpTap(_ sender: Any) {
         self.listNews.removeAll()
-        getNews(param: "trump")
+        getNews(param: "macron")
     }
     
     
@@ -66,11 +78,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                                 //print(model)
                                 self.listNews.append(model)
                                 
+                                
                             }
                         }
                     }
                     DispatchQueue.main.async { // Correct
                         
+                        self.listNews = self.listNews.sorted(by: {
+                            $0.publishedAt.compare($1.publishedAt) == .orderedAscending
+                        })
                         self.tableView.reloadData()
                     }
                    
@@ -112,6 +128,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
     }
 
+}
+
+class Colors {
+    var gl:CAGradientLayer!
+    
+    init() {
+        let colorTop = UIColor(red: 138.0 / 255.0, green: 58.0 / 255.0, blue: 185.0 / 255.0, alpha: 1.0).cgColor
+        let colorBottom = UIColor(red: 251.0 / 255.0, green: 173.0 / 255.0, blue: 80.0 / 255.0, alpha: 1.0).cgColor
+        
+        self.gl = CAGradientLayer()
+        self.gl.colors = [colorTop, colorBottom]
+        self.gl.locations = [0.0, 1.0]
+    }
 }
 
 
