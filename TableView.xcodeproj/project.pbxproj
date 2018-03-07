@@ -103,15 +103,15 @@
 		52A4865E1F8E1CBA00A54326 /* TableView */ = {
 			isa = PBXGroup;
 			children = (
-				6050CE1B204ECDCB0009683C /* CustomTableViewCell.swift */,
 				52A4865F1F8E1CBA00A54326 /* AppDelegate.swift */,
+				6050CE1B204ECDCB0009683C /* CustomTableViewCell.swift */,
 				52A486611F8E1CBA00A54326 /* ViewController.swift */,
+				6050CE19204DC2A80009683C /* News.swift */,
 				52A486631F8E1CBA00A54326 /* Main.storyboard */,
-				6050CE1D204ED5100009683C /* NewsViewController.swift */,
 				52A486661F8E1CBA00A54326 /* Assets.xcassets */,
+				6050CE1D204ED5100009683C /* NewsViewController.swift */,
 				52A486681F8E1CBA00A54326 /* LaunchScreen.storyboard */,
 				52A4866B1F8E1CBA00A54326 /* Info.plist */,
-				6050CE19204DC2A80009683C /* News.swift */,
 			);
 			path = TableView;
 			sourceTree = "<group>";

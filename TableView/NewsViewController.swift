@@ -14,7 +14,7 @@ class NewsViewController: UIViewController {
     @IBOutlet weak var titleView: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     var news: News?
-    var defaultUrl = "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png"
+    var defaultUrl = URL(string: "https://increasify.com.au/wp-content/uploads/2016/08/default-image.png")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,31 +30,21 @@ class NewsViewController: UIViewController {
         titleView.text = news?.title
         textView.text = news?.description
         
-        
-      
-      
-        if (news?.urlToImage.isEmpty)!{
-            let imageUrl = URL(string: (self.defaultUrl))
+         let imageUrl = URL(string: (news?.urlToImage)!)
             DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageUrl!)
-                DispatchQueue.main.async {
-                    self.imageView?.image = UIImage(data: data!)
+                if let data = try? Data(contentsOf: imageUrl!) {
+                    DispatchQueue.main.async {
+                        self.imageView?.image = UIImage(data: data)
+                    }
+                }
+                else {
+                let data = try? Data(contentsOf: self.defaultUrl!)
+                    DispatchQueue.main.async {
+                        self.imageView?.image = UIImage(data: data!)
+                    }
                 }
             }
-        }
-        else {
-            let imageUrl = URL(string: (news?.urlToImage)!)
-            DispatchQueue.global().async {
-                let data = try? Data(contentsOf: imageUrl!)
-                DispatchQueue.main.async {
-                    self.imageView?.image = UIImage(data: data!)
-                }
-            }
-        }
-        
-        }
-      
-    
     }
+}
 
 

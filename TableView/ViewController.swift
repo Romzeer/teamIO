@@ -47,7 +47,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func trumpTap(_ sender: Any) {
         self.listNews.removeAll()
-        getNews(param: "macron")
+        getNews(param: "trump")
     }
     
     
